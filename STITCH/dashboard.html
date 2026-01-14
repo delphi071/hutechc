@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unified AI Studio Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563EB", // blue-600
+                        "background-light": "#F9FAFB",
+                        "border-light": "#E5E7EB",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "Pretendard", "system-ui", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Inter', sans-serif; @apply bg-background-light text-slate-900; }
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<header class="h-16 border-b border-border-light bg-white sticky top-0 z-50 px-6 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2 font-bold text-xl text-primary">
+<span class="material-symbols-outlined text-3xl">auto_awesome</span>
+<span>AI STUDIO</span>
+</div>
+<nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">홈</a>
+<a class="hover:text-primary transition-colors" href="#">창작마켓</a>
+<div class="relative">
+<a class="text-primary py-5 inline-block" href="#">창작작업실</a>
+<div class="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></div>
+</div>
+<a class="hover:text-primary transition-colors" href="#">요금제</a>
+<a class="hover:text-primary transition-colors" href="#">고객센터</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-100 rounded-full text-slate-500">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-full text-slate-500">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<div class="flex items-center gap-2 pl-2 border-l border-border-light">
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-slate-400">person</span>
+</div>
+<span class="text-xs font-medium text-slate-700">사용자님</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-20 border-r border-border-light bg-white flex flex-col items-center py-6 gap-8">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+<div class="flex flex-col gap-6">
+<button class="group flex flex-col items-center gap-1">
+<div class="p-2 rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">dashboard</span>
+</div>
+</button>
+<button class="group flex flex-col items-center gap-1">
+<div class="p-2 text-slate-400 hover:bg-slate-50 hover:text-primary rounded-xl transition-all">
+<span class="material-symbols-outlined">folder</span>
+</div>
+</button>
+<button class="group flex flex-col items-center gap-1">
+<div class="p-2 text-slate-400 hover:bg-slate-50 hover:text-primary rounded-xl transition-all">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+</button>
+<button class="group flex flex-col items-center gap-1">
+<div class="p-2 text-slate-400 hover:bg-slate-50 hover:text-primary rounded-xl transition-all">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</button>
+</div>
+<div class="mt-auto">
+<button class="p-2 text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto custom-scrollbar p-8">
+<div class="max-w-7xl mx-auto space-y-8">
+<nav class="flex text-xs text-slate-400 items-center gap-2">
+<span class="material-symbols-outlined text-sm">home</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span>창작작업실</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-slate-700 font-medium">문서 만들기</span>
+</nav>
+<div class="flex justify-between items-end">
+<h1 class="text-2xl font-bold text-slate-900">창작작업실</h1>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+<div class="bg-white p-5 rounded-2xl border border-border-light hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all">
+<span class="material-symbols-outlined text-3xl text-slate-300 mb-3">play_circle</span>
+<div class="font-bold text-sm text-slate-800">유튜브 영상만들기</div>
+<div class="text-[10px] text-slate-400 mt-1.5 leading-tight">텍스트, 영상, 음성 활용</div>
+</div>
+<div class="bg-primary p-5 rounded-2xl text-white shadow-lg shadow-primary/20 cursor-pointer transform hover:scale-[1.02] transition-all">
+<span class="material-symbols-outlined text-3xl mb-3">description</span>
+<div class="font-bold text-sm">문서 만들기</div>
+<div class="text-[10px] opacity-80 mt-1.5 leading-tight">문서 에디터, 텍스트 생성 AI</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-border-light hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all">
+<span class="material-symbols-outlined text-3xl text-slate-300 mb-3">bar_chart</span>
+<div class="font-bold text-sm text-slate-800">리서치&amp;분석</div>
+<div class="text-[10px] text-slate-400 mt-1.5 leading-tight">리서치, 분석, 통계 생성</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-border-light hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all">
+<span class="material-symbols-outlined text-3xl text-slate-300 mb-3">code</span>
+<div class="font-bold text-sm text-slate-800">프로그래밍</div>
+<div class="text-[10px] text-slate-400 mt-1.5 leading-tight">코드 생성 AI 활용</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-border-light hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all">
+<span class="material-symbols-outlined text-3xl text-slate-300 mb-3">image</span>
+<div class="font-bold text-sm text-slate-800">이미지, 디자인</div>
+<div class="text-[10px] text-slate-400 mt-1.5 leading-tight">포스터, 로고 디자인</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-border-light hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all">
+<span class="material-symbols-outlined text-3xl text-slate-300 mb-3">music_note</span>
+<div class="font-bold text-sm text-slate-800">음악</div>
+<div class="text-[10px] text-slate-400 mt-1.5 leading-tight">배경음악, 효과음 생성</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-border-light hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all">
+<span class="material-symbols-outlined text-3xl text-slate-300 mb-3">mic</span>
+<div class="font-bold text-sm text-slate-800">음성</div>
+<div class="text-[10px] text-slate-400 mt-1.5 leading-tight">시내레이션, 클로닝</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-border-light hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all">
+<span class="material-symbols-outlined text-3xl text-slate-300 mb-3">more_horiz</span>
+<div class="font-bold text-sm text-slate-800">기타</div>
+<div class="text-[10px] text-slate-400 mt-1.5 leading-tight">프로세스, PPT 등</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2.5">
+<button class="px-5 py-2 rounded-full border border-border-light bg-white hover:bg-slate-50 text-sm text-slate-600 transition-colors">보유한 양식에 텍스트 입력</button>
+<button class="px-5 py-2 rounded-full border border-border-light bg-white hover:bg-slate-50 text-sm text-slate-600 transition-colors">나만의 양식 만들기</button>
+<button class="px-5 py-2 rounded-full bg-slate-900 text-white text-sm font-semibold shadow-sm">양식 생성 후 내용 작성</button>
+<button class="px-5 py-2 rounded-full border border-border-light bg-white hover:bg-slate-50 text-sm text-slate-600 transition-colors">양식 만들기</button>
+<button class="px-5 py-2 rounded-full border border-border-light bg-white hover:bg-slate-50 text-sm text-slate-600 transition-colors">내용 작성 후 검수 받기</button>
+<button class="px-5 py-2 rounded-full border border-border-light bg-white/50 text-sm text-slate-400 cursor-not-allowed">관련 서비스 표시 영역</button>
+</div>
+<div class="bg-white border border-border-light rounded-2xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-border-light bg-slate-50/50 flex justify-between items-center">
+<div class="flex items-center gap-6">
+<div class="flex gap-3">
+<select class="bg-white border-border-light rounded-lg text-xs py-1.5 px-3 focus:ring-primary focus:border-primary">
+<option>문서 유형</option>
+<option>기획서</option>
+<option>계약서</option>
+</select>
+<select class="bg-white border-border-light rounded-lg text-xs py-1.5 px-3 focus:ring-primary focus:border-primary">
+<option>전문 분야</option>
+<option>IT/기술</option>
+<option>법률</option>
+<option>마케팅</option>
+</select>
+<select class="bg-white border-border-light rounded-lg text-xs py-1.5 px-3 focus:ring-primary focus:border-primary">
+<option>표준 양식</option>
+</select>
+<button class="bg-slate-800 text-white text-[11px] font-semibold px-3 py-1.5 rounded-lg hover:bg-slate-700 transition-colors">프리셋</button>
+</div>
+<div class="h-5 w-px bg-slate-200"></div>
+<div class="flex items-center gap-4">
+<span class="px-4 py-1.5 bg-white border border-border-light text-slate-700 rounded-lg text-xs font-semibold">스마트 에디터</span>
+<div class="flex items-center gap-4">
+<label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-slate-600">
+<input checked="" class="text-primary focus:ring-primary h-4 w-4 border-slate-300" name="editor" type="radio"/> 인터랙티브 모드
+                                    </label>
+<label class="flex items-center gap-2 text-xs font-medium cursor-pointer text-slate-600">
+<input class="text-primary focus:ring-primary h-4 w-4 border-slate-300" name="editor" type="radio"/> 정적 편집
+                                    </label>
+</div>
+</div>
+</div>
+<button class="flex items-center gap-1 text-xs font-semibold text-slate-400 hover:text-slate-600">
+                            문서 설정 <span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+<div class="px-6 py-4 border-b border-border-light flex items-center gap-8">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">분석 AI 모델</span>
+<div class="flex flex-wrap gap-6 text-xs font-medium">
+<label class="flex items-center gap-2 cursor-pointer text-slate-700">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/> GPT-4o
+                            </label>
+<label class="flex items-center gap-2 cursor-pointer text-slate-700">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/> Claude 3.5
+                            </label>
+<label class="flex items-center gap-2 cursor-pointer text-slate-700">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/> Gemini Pro
+                            </label>
+<label class="flex items-center gap-2 cursor-pointer text-slate-700">
+<input class="rounded border-slate-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/> HyperCLOVA X
+                            </label>
+</div>
+</div>
+<div class="flex h-[400px]">
+<div class="w-1/3 border-r border-border-light flex flex-col bg-slate-50/30">
+<div class="p-4 border-b border-border-light flex justify-between items-center">
+<span class="text-xs font-bold text-slate-500 uppercase">참고 자료 첨부</span>
+<button class="text-[10px] font-bold text-primary hover:underline">자료 설정</button>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center p-8 text-center">
+<div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-4xl">upload_file</span>
+</div>
+<p class="text-[11px] text-slate-400 mb-6 font-medium">분석할 원본 문서나 자료를 올려주세요</p>
+<div class="flex gap-2.5 mb-8">
+<div class="w-9 h-11 bg-white border border-border-light rounded-lg shadow-sm flex flex-col items-center justify-center gap-0.5">
+<span class="text-[9px] font-bold text-red-500">PDF</span>
+<div class="w-4 h-0.5 bg-red-100 rounded-full"></div>
+</div>
+<div class="w-9 h-11 bg-white border border-border-light rounded-lg shadow-sm flex flex-col items-center justify-center gap-0.5">
+<span class="text-[9px] font-bold text-blue-500">DOCX</span>
+<div class="w-4 h-0.5 bg-blue-100 rounded-full"></div>
+</div>
+<div class="w-9 h-11 bg-white border border-border-light rounded-lg shadow-sm flex flex-col items-center justify-center gap-0.5">
+<span class="text-[9px] font-bold text-emerald-500">XLSX</span>
+<div class="w-4 h-0.5 bg-emerald-100 rounded-full"></div>
+</div>
+<div class="w-9 h-11 bg-white border border-border-light rounded-lg shadow-sm flex flex-col items-center justify-center gap-0.5">
+<span class="text-[9px] font-bold text-amber-500">PPTX</span>
+<div class="w-4 h-0.5 bg-amber-100 rounded-full"></div>
+</div>
+</div>
+<button class="flex items-center gap-2 px-6 py-2.5 bg-white border border-border-light rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all">
+<span class="material-symbols-outlined text-base">add</span>
+                                    파일 불러오기
+                                </button>
+</div>
+<div class="p-4 border-t border-border-light flex justify-between items-center bg-slate-50/50">
+<span class="text-[11px] font-bold text-slate-400">첨부된 자료 목록 (0)</span>
+<div class="w-5 h-5 rounded-full border-2 border-slate-200"></div>
+</div>
+</div>
+<div class="w-2/3 flex flex-col p-6 bg-white">
+<div class="flex justify-between items-center mb-3">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-wider">문서 작성 지시어 (Prompt)</span>
+<button class="text-slate-400 hover:text-slate-600"><span class="material-symbols-outlined">history</span></button>
+</div>
+<div class="flex-1 relative border border-border-light rounded-2xl p-5 mb-4 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 transition-all">
+<textarea class="w-full h-full resize-none border-none focus:ring-0 p-0 text-sm text-slate-700 placeholder-slate-400" placeholder="예: '첨부된 데이터를 바탕으로 2024년 시장 분석 보고서를 작성해줘. 톤앤매너는 전문적이고 설득력 있게.'"></textarea>
+<div class="absolute bottom-4 right-4 flex items-center gap-2">
+<button class="p-2 text-slate-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mic</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-border-light text-[11px] font-semibold text-slate-500 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-base text-primary">auto_fix_high</span> 개요 자동 생성
+                                </button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-border-light text-[11px] font-semibold text-slate-500 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-base text-primary">translate</span> 다국어 번역 초안
+                                </button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-border-light text-[11px] font-semibold text-slate-500 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-base text-primary">history_edu</span> 스타일 가이드 적용
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center items-center gap-3 pt-4 pb-16">
+<button class="flex items-center gap-2 px-8 py-3 rounded-xl bg-slate-100 text-slate-600 font-bold text-sm hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-lg">replay</span> 초기화
+                    </button>
+<button class="flex items-center gap-2 px-8 py-3 rounded-xl border border-border-light bg-white text-slate-600 font-bold text-sm hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-lg">save</span> 초안 저장
+                    </button>
+<button class="flex items-center gap-2 px-10 py-3 rounded-xl bg-slate-800 text-white font-bold text-sm hover:bg-slate-900 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span> 내보내기
+                    </button>
+<button class="flex items-center gap-2 px-12 py-3 rounded-xl bg-primary text-white font-bold text-sm shadow-xl shadow-primary/20 hover:bg-blue-700 transition-all scale-105">
+<span class="material-symbols-outlined text-lg">edit_document</span> 문서 생성
+                    </button>
+</div>
+</div>
+</main>
+<div class="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4">
+<button class="w-12 h-12 rounded-2xl bg-white border border-border-light flex items-center justify-center text-slate-500 shadow-lg hover:text-primary hover:border-primary transition-all group" title="파일 업로드">
+<span class="material-symbols-outlined text-2xl">upload</span>
+</button>
+<button class="w-12 h-12 rounded-2xl bg-white border border-border-light flex items-center justify-center text-slate-500 shadow-lg hover:text-primary hover:border-primary transition-all group" title="노트 작성">
+<span class="material-symbols-outlined text-2xl">edit_note</span>
+</button>
+<button class="w-12 h-12 rounded-2xl bg-white border border-border-light flex items-center justify-center text-slate-500 shadow-lg hover:text-primary hover:border-primary transition-all group" title="번역">
+<span class="material-symbols-outlined text-2xl">g_translate</span>
+</button>
+<button class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:bg-blue-700 transition-all scale-110" title="AI 채팅">
+<span class="material-symbols-outlined text-2xl">chat_bubble</span>
+</button>
+</div>
+</div>
+<footer class="h-12 border-t border-border-light bg-white px-8 flex items-center justify-between text-[11px] text-slate-400 font-medium">
+<div class="flex items-center gap-8">
+<span>© 2024 AI STUDIO. Unified Professional Platform.</span>
+<div class="flex gap-6">
+<a class="hover:text-slate-700 transition-colors" href="#">이용약관</a>
+<a class="hover:text-slate-700 transition-colors" href="#">개인정보처리방침</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined !text-lg">play_arrow</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined !text-lg">share</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined !text-lg">alternate_email</span></a>
+</div>
+</footer>
+
+</body></html>
